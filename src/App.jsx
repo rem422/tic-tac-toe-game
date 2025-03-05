@@ -10,10 +10,10 @@ const [gameTurns, setGameTurns] = useState([]);
 
 const handleSelectPlayer = (rowIndex, colIndex) => {
   setActivePlayer((curActivePlayer) => curActivePlayer === 'X' ? 'O' : 'X');
-  setGameTurns(prevTurns => {
+  setGameTurns((prevTurns) => {
     let currentPlayer = "X";
 
-    if(prevTurns.length > 0 && prevTurns[0] === 'X') {
+    if(prevTurns.length > 0 && prevTurns[0].player === 'X') {
       currentPlayer = "O";
     }
 
@@ -45,7 +45,7 @@ const handleSelectPlayer = (rowIndex, colIndex) => {
           turns={gameTurns}  // passing the turns array to the GameBoard component for display purposes.
         />
       </div>
-      <Log />
+      <Log  turns={gameTurns}/>
     </main>
   )
 }

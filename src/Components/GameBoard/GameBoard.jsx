@@ -9,7 +9,6 @@ const GameBoard = ({onSelectSquare, turns}) => {
     for(const turn of turns) {
         const {square, player} = turn;
         const {row, col} = square;
-
         gameBoard[row][col] = player;
     }
 
@@ -37,7 +36,7 @@ const GameBoard = ({onSelectSquare, turns}) => {
                     <ol>
                         {row.map((playerSymbol, colIndex) => 
                             <li key={colIndex}>
-                                <button onClick={onSelectSquare}>{playerSymbol}</button>
+                                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
                             </li>
                         )}
                     </ol>
