@@ -1,11 +1,14 @@
 import { useState } from 'react'
 
-const Player = ({InitialName, symbol, isActive}) => {
+const Player = ({InitialName, symbol, isActive, onChangeName}) => {
     const [playerName, setPlayerName] = useState(InitialName);  // initialize the name state with the provided name prop
     const[isEditing, setIsEditing] = useState(false);
 
     const handleEditClick = () => {
         setIsEditing((editing) => !editing);// schedule a state update to true
+        if (isEditing) {
+            onChangeName(symbol, playerName); // trigger the parent component's callback function to update the player's name in the game state
+        }
     }
 
     const handleChange = (e) => {
